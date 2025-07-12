@@ -1,0 +1,21 @@
+# k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-cool-app # Choose a name for your app
+spec:
+  replicas: 2 # Run 2 copies for reliability
+  selector:
+    matchLabels:
+      app: my-cool-app
+  template:
+    metadata:
+      labels:
+        app: my-cool-app
+    spec:
+      containers:
+      - name: app
+        # !! THIS LINE GETS UPDATED BY GITHUB ACTIONS !!
+        image: ghcr.io/YOUR_USERNAME/YOUR_REPO:initial # Placeholder image
+        ports:
+        - containerPort: 8080 # The port your app listens on INSIDE the container
